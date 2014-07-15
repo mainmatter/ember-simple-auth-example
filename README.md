@@ -1,6 +1,6 @@
-# Ember-simple-auth-sample
+# Ember CLI Ember Simple Auth example
 
-This README outlines the details of collaborating on this Ember application.
+Example project that shows how to use Ember Simple Auth with Ember CLI.
 
 ## Installation
 
@@ -10,16 +10,5 @@ This README outlines the details of collaborating on this Ember application.
 
 ## Running
 
-* `ember server`
-* Visit your app at http://localhost:4200.
-
-## Running Tests
-
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://iamstef.net/ember-cli/](http://iamstef.net/ember-cli/).
+* `ember serve`
+* open http://localhost:4200
