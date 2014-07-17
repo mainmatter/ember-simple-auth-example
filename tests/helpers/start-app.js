@@ -4,8 +4,8 @@ var Application = require('ember-simple-auth-sample/app')['default'];
 var Router = require('ember-simple-auth-sample/router')['default'];
 import Ember from 'ember';
 
-import authenticateSession from './authenticate-session';
-import invalidateSession from './invalidate-session';
+import authenticateSession from 'simple-auth/test-helpers/authenticate-session';
+import invalidateSession from 'simple-auth/test-helpers/invalidate-session';
 
 export default function startApp(attrs) {
   var App;
