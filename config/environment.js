@@ -18,6 +18,12 @@ module.exports = function(environment) {
     }
   };
 
+  if (environment === 'test') {
+    ENV['simple-auth'] = {
+      store: 'simple-auth-session-store:ephemeral'
+    }
+  }
+
   if (environment === 'development') {
     // LOG_MODULE_RESOLVER is needed for pre-1.6.0
     ENV.LOG_MODULE_RESOLVER = true;
