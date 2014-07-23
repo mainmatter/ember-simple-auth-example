@@ -26,7 +26,7 @@
     "ember-cli-ic-ajax": "0.1.1",
     "ember-cli-pretender": "0.0.5",
     "ember-cli-simple-auth": "git://github.com/simplabs/ember-cli-simple-auth.git#next",
-    "ember-cli-simple-auth-oauth2": "^0.6.3",
+    "ember-cli-simple-auth-oauth2": "git://github.com/simplabs/ember-cli-simple-auth-oauth2.git#next",
     "express": "^4.1.1",
     "glob": "^3.2.9",
     "originate": "0.1.5"
