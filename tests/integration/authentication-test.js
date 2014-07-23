@@ -1,4 +1,4 @@
-/* global Pretender */
+/* global Pretender, authenticateSession, invalidateSession */
 
 import Ember from 'ember';
 import { test } from 'ember-qunit';
