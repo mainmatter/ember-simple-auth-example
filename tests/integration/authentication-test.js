@@ -39,7 +39,7 @@ test('users can log in', function() {
     equal(find('a:contains("Logout")').length, 1, 'The page shows a logout link when the session is authenticated');
   });
 });
-/*
+
 test('a protected route is accessible when the session is authenticated', function() {
   expect(1);
   authenticateSession();
@@ -59,4 +59,3 @@ test('a protected route is not accessible when the session is not authenticated'
     notEqual(currentRouteName(), 'protected');
   });
 });
-*/
