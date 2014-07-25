@@ -15,5 +15,5 @@ Example project that shows how to use Ember Simple Auth with Ember CLI.
 
 ## Running the tests
 
-* `ember test --environment test` for running on the console
-* `ember test --environment test --server` for running in the browser
+* `ember test` for running on the console
+* `ember test --server` for running in the browser
