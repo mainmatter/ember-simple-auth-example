@@ -1,8 +1,6 @@
-/* global require */
-
-var Application = require('ember-simple-auth-sample/app')['default'];
-var Router = require('ember-simple-auth-sample/router')['default'];
 import Ember from 'ember';
+import Application from 'ember-simple-auth-sample/app';
+import Router from 'ember-simple-auth-sample/router';
 
 import 'simple-auth-testing/test-helpers';
 
@@ -12,7 +10,7 @@ export default function startApp(attrs) {
   var attributes = Ember.merge({
     // useful Test defaults
     rootElement: '#ember-testing',
-    LOG_ACTIVE_GENERATION:false,
+    LOG_ACTIVE_GENERATION: false,
     LOG_VIEW_LOOKUPS: false
   }, attrs); // but you can override;
 
@@ -20,7 +18,7 @@ export default function startApp(attrs) {
     location: 'none'
   });
 
-  Ember.run(function(){
+  Ember.run(function() {
     App = Application.create(attributes);
     App.setupForTesting();
     App.injectTestHelpers();
