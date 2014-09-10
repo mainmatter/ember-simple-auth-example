@@ -4,12 +4,12 @@ module.exports = function(app) {
 
     if (req.body.grant_type === 'password') {
       if (req.body.username === 'letme' && req.body.password === 'in') {
-        res.send(200, { access_token: "secret token!" });
+        res.send({ access_token: "secret token!" });
       } else {
-        res.send(400, { error: "invalid_grant" });
+        res.status(400).send({ error: "invalid_grant" });
       }
     } else {
-      res.send(400, { error: "unsupported_grant_type" });
+      res.stauts(400).send({ error: "unsupported_grant_type" });
     }
   });
 };
