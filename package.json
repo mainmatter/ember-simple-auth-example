@@ -29,7 +29,6 @@
     "express": "^4.8.5",
     "glob": "^4.0.5",
     "ember-cli-pretender": "*",
-    "ember-cli-simple-auth-oauth2": "0.6.6",
-    "ember-cli-simple-auth-testing": "0.6.6"
+    "ember-cli-simple-auth-oauth2": "git+ssh://git@github.com:simplabs/ember-cli-simple-auth-oauth2.git#next"
   }
 }

@@ -18,10 +18,14 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['simple-auth-oauth2'] = {
+    serverTokenRevocationEndpoint: '/revoke'
+  };
+
   if (environment === 'test') {
     ENV['simple-auth'] = {
       store: 'simple-auth-session-store:ephemeral'
-    }
+    };
   }
 
   if (environment === 'development') {
