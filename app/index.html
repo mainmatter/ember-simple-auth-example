@@ -7,20 +7,15 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{BASE_TAG}}
+    {{content-for 'head'}}
 
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/ember-simple-auth-sample.css">
   </head>
   <body>
-    <script>
-      window.EmberSimpleAuthSampleENV = {{ENV}};
-      window.EmberENV = window.EmberSimpleAuthSampleENV.EmberENV;
-    </script>
+    {{content-for 'body'}}
+
     <script src="assets/vendor.js"></script>
     <script src="assets/ember-simple-auth-sample.js"></script>
-    <script>
-      window.EmberSimpleAuthSample = require('ember-simple-auth-sample/app')['default'].create(EmberSimpleAuthSampleENV.APP);
-    </script>
   </body>
 </html>

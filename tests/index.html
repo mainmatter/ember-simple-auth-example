@@ -7,7 +7,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{BASE_TAG}}
+    {{content-for 'head'}}
+    {{content-for 'test-head'}}
 
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/ember-simple-auth-sample.css">
@@ -33,17 +34,12 @@
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
 
-    <script>
-      window.EmberSimpleAuthSampleENV = {{ENV}};
-      window.EmberENV = window.EmberSimpleAuthSampleENV.EmberENV;
-    </script>
+    {{content-for 'body'}}
+    {{content-for 'test-body'}}
     <script src="assets/vendor.js"></script>
     <script src="assets/test-support.js"></script>
     <script src="assets/ember-simple-auth-sample.js"></script>
     <script src="testem.js"></script>
-    <script>
-      require('ember-simple-auth-sample/tests/test-helper');
-    </script>
     <script src="assets/test-loader.js"></script>
   </body>
 </html>
