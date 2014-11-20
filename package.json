@@ -32,6 +32,6 @@
     "glob": "^4.0.5",
     "ember-cli-pretender": "*",
     "ember-cli-simple-auth-oauth2": "0.7.1",
-    "ember-cli-simple-auth-testing": "git://github.com/simplabs/ember-cli-simple-auth-testing.git#better-integration"
+    "ember-cli-simple-auth-testing": "git://github.com/simplabs/ember-cli-simple-auth-testing.git"
   }
 }
