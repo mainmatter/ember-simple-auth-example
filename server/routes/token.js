@@ -9,7 +9,7 @@ module.exports = function(app) {
         res.status(400).send({ error: 'invalid_grant' });
       }
     } else {
-      res.stauts(400).send({ error: 'unsupported_grant_type' });
+      res.status(400).send({ error: 'unsupported_grant_type' });
     }
   });
 
@@ -17,7 +17,7 @@ module.exports = function(app) {
     if (req.body.token_type_hint === 'access_token' || req.body.token_type_hint === 'refresh_token') {
       res.send('');
     } else {
-      res.stauts(400).send({ error: 'unsupported_token_type' });
+      res.status(400).send({ error: 'unsupported_token_type' });
     }
   })
 };
