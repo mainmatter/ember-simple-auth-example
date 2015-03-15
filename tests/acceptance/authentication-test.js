@@ -1,7 +1,5 @@
-/* global Pretender, authenticateSession, invalidateSession */
-
 import Ember from 'ember';
-import { test } from 'ember-qunit';
+import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
 
 var App;
@@ -22,12 +20,11 @@ module('Authentication', {
   },
 });
 
-test('users can log in', function() {
-  expect(2);
+test('users can log in', function(assert) {
   visit('/');
 
   andThen(function() {
-    equal(find('a:contains("Login")').length, 1, 'The page shows a login link when the session is not authenticated');
+    assert.equal(find('a:contains("Login")').length, 1, 'The page shows a login link when the session is not authenticated');
   });
 
   visit('/login');
@@ -36,26 +33,24 @@ test('users can log in', function() {
   click('button[type="submit"]');
 
   andThen(function() {
-    equal(find('a:contains("Logout")').length, 1, 'The page shows a logout link when the session is authenticated');
+    assert.equal(find('a:contains("Logout")').length, 1, 'The page shows a logout link when the session is authenticated');
   });
 });
 
-test('a protected route is accessible when the session is authenticated', function() {
-  expect(1);
+test('a protected route is accessible when the session is authenticated', function(assert) {
   authenticateSession();
   visit('/protected');
 
   andThen(function() {
-    equal(currentRouteName(), 'protected');
+    assert.equal(currentRouteName(), 'protected');
   });
 });
 
-test('a protected route is not accessible when the session is not authenticated', function() {
-  expect(1);
+test('a protected route is not accessible when the session is not authenticated', function(assert) {
   invalidateSession();
   visit('/protected');
 
   andThen(function() {
-    notEqual(currentRouteName(), 'protected');
+    assert.notEqual(currentRouteName(), 'protected');
   });
 });
