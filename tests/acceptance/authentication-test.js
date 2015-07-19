@@ -54,3 +54,12 @@ test('a protected route is not accessible when the session is not authenticated'
     assert.notEqual(currentRouteName(), 'protected');
   });
 });
+
+test('users can logout', function(assert) {
+  authenticateSession();
+  visit('/');
+  click('#logout');
+  andThen(function() {
+    assert.equal(find('a:contains("Login")').length, 1, 'The page shows a login link when the users logout and session is unauthenticated');
+  });
+});
