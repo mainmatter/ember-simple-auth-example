@@ -1,5 +1,7 @@
 import Ember from 'ember';
 import { module, test } from 'qunit';
+import { authenticateSession, invalidateSession } from '../helpers/ember-simple-auth';
+import Pretender from 'pretender';
 import startApp from '../helpers/start-app';
 
 var App;
@@ -9,7 +11,7 @@ module('Authentication', {
   setup: function() {
     App = startApp();
     server = new Pretender(function() {
-      this.post('/token', function(request) {
+      this.post('/token', function() {
         return [200, { 'Content-Type': 'application/json' }, '{ "access_token": "access_token" }'];
       });
     });
@@ -38,7 +40,7 @@ test('users can log in', function(assert) {
 });
 
 test('a protected route is accessible when the session is authenticated', function(assert) {
-  authenticateSession();
+  authenticateSession(App);
   visit('/protected');
 
   andThen(function() {
@@ -47,7 +49,7 @@ test('a protected route is accessible when the session is authenticated', functi
 });
 
 test('a protected route is not accessible when the session is not authenticated', function(assert) {
-  invalidateSession();
+  invalidateSession(App);
   visit('/protected');
 
   andThen(function() {
@@ -56,7 +58,7 @@ test('a protected route is not accessible when the session is not authenticated'
 });
 
 test('users can logout', function(assert) {
-  authenticateSession();
+  authenticateSession(App);
   visit('/');
   click('#logout');
   andThen(function() {

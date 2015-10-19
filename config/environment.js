@@ -19,10 +19,6 @@ module.exports = function(environment) {
     }
   };
 
-  ENV['simple-auth-oauth2'] = {
-    serverTokenRevocationEndpoint: '/revoke'
-  };
-
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -41,10 +37,6 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
-
-    ENV['simple-auth'] = {
-      store: 'simple-auth-session-store:ephemeral'
-    };
   }
 
   if (environment === 'production') {

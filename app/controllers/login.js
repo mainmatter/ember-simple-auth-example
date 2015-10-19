@@ -1,10 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  session: Ember.inject.service(),
+
   actions: {
     authenticate() {
-      var data = this.getProperties('identification', 'password');
-      return this.get('session').authenticate('simple-auth-authenticator:oauth2-password-grant', data);
+      const { identification, password } = this.getProperties('identification', 'password');
+      return this.get('session').authenticate('authenticator:oauth2', identification, password);
     }
   }
 });
