@@ -6,7 +6,8 @@
 {{#if session.isAuthenticated}}
   <a id="logout" {{ action 'invalidateSession' }}>Logout</a>
 {{else}}
-  {{#link-to 'login'}}Login{{/link-to}}
+  {{#link-to 'login'}}OAuth 2 Login{{/link-to}}
+  {{#link-to 'devise-login'}}Devise Login{{/link-to}}
 {{/if}}
 
 {{outlet}}
