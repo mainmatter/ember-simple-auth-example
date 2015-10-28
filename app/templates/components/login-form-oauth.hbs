@@ -1,0 +1,9 @@
+<h4 class="headline">With oauth2</h4>
+{{#if errors}}<div class="errors">{{errors}}</div>{{/if}}
+<form {{action 'authenticate' on='submit'}}>
+  <label for="oauth2-identification">Login</label>
+  {{input id='oauth2-identification' placeholder='Enter Login' value=identification}}
+  <label for="oauth2-password">Password</label>
+  {{input id='oauth2-password' placeholder='Enter Password' type='password' value=password}}
+  <button type="submit">Login</button>
+</form>

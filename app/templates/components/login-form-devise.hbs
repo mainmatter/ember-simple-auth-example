@@ -1,0 +1,9 @@
+<h4 class="headline">With Devise</h4>
+{{#if errors}}<div class="errors">{{errors}}</div>{{/if}}
+<form {{action 'authenticate' on='submit'}}>
+  <label for="devise-identification">Email</label>
+  {{input id='devise-identification' value=identification placeholder='Enter your email address' type='email' required='' autofocus=''}}
+  <label for="devise-password">Password</label>
+  {{input id='devise-password' value=password placeholder='Enter your password' type='password' required=''}}
+  <button type="submit">Sign in</button>
+</form>

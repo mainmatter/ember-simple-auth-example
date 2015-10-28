@@ -1,9 +1,5 @@
 <h3>Login</h3>
 
-<form {{action 'authenticate' on='submit'}}>
-  <label for="identification">Login</label>
-  {{input id='identification' placeholder='Enter Login' value=identification}}
-  <label for="password">Password</label>
-  {{input id='password' placeholder='Enter Password' type='password' value=password}}
-  <button type="submit">Login</button>
-</form>
+{{login-form-devise showErrors='showErrors'}}
+
+{{login-form-oauth showErrors="showErrors"}}
