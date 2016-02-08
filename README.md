@@ -27,6 +27,7 @@ You will need the following things properly installed on your computer.
 * You can go on Login page and authenticate via:
   * Oauth2 form with login: "logme" / password: "in"
   * Devise form with login: "test@test.com" / password: "password"
+  * Devise form with login: "admin@test.com" / password: "admin" (in order to access `posts` resource)
 
 ### Code Generators
 
