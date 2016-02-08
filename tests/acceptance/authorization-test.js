@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { module, test } from 'qunit';
+import { authenticateSession } from '../helpers/ember-simple-auth';
 import Pretender from 'pretender';
 import startApp from '../helpers/start-app';
 
@@ -32,12 +33,8 @@ module('Authentication', {
   },
 });
 
-test('user cannot see posts if not authorized', function(assert) {
-  visit('/');
-
-  andThen(function() {
-    assert.equal(currentRouteName(), 'index');
-  });
+test('user can see posts if authorized', function(assert) {
+  authenticateSession(App);
 
   visit('/posts');
 

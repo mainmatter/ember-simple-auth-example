@@ -1,6 +1,7 @@
 module.exports = function(app) {
   app.get('/api/posts', function(req, res) {
-    if (req.headers.authorization) {
+    console.log(req.headers.authorization);
+    if (req.headers.authorization == 'Token token="secret admin token!", email="admin@test.com"') {
       res.status(200).send({
         data: [
           {
