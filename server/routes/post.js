@@ -1,7 +1,6 @@
 module.exports = function(app) {
   app.get('/api/posts', function(req, res) {
-    console.log(req.headers.authorization);
-    if (req.headers.authorization == 'Token token="secret admin token!", email="admin@test.com"') {
+    if (req.headers.authorization == 'Bearer secret admin token!') {
       res.status(200).send({
         data: [
           {
@@ -14,11 +13,11 @@ module.exports = function(app) {
         ]
       });
     } else {
-      res.status(403).send({
+      res.status(401).send({
         errors: [
           {
             detail: 'Access denied',
-            status: '403'
+            status: '401'
           }
         ]
       });

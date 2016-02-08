@@ -13,14 +13,14 @@ module('Authentication', {
     var response = {
       "errors": [
         {
-          status: "403",
-          detail: "access_denied"
+          status: "401",
+          detail: "Access denied"
         }
       ]
     };
     server = new Pretender(function() {
       this.get('/api/posts', function() {
-        return [403, { 'Content-Type': 'application/json' }, JSON.stringify(response)];
+        return [401, { 'Content-Type': 'application/json' }, JSON.stringify(response)];
       });
     });
   },
@@ -31,11 +31,18 @@ module('Authentication', {
 });
 
 test('user cannot see posts if not authorized', function(assert) {
+  // FIXME: this test fails on any assertion, investigate why
   authenticateSession(App);
 
-  visit('/posts');
+  visit('/');
+
+  click('a[href="/posts"]');
 
   andThen(function() {
-    assert.equal(currentRouteName(), 'index');
+    assert.notEqual(currentRouteName(), 'posts');
+  });
+
+  andThen(function() {
+    assert.equal(find('a:contains("Login")').length, 1, 'The page shows a login link and session is unauthenticated');
   });
 });

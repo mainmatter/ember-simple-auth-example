@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import BaseAuthorizer from 'ember-simple-auth/authorizers/base';
 
 /*
@@ -17,14 +16,15 @@ export default BaseAuthorizer.extend({
   */
   authorize(data, block) {
     const authenticatorType = data['authenticator'];
+    let token;
 
-    if (Ember.isEqual(authenticatorType, 'authenticator:devise')) {
-      const authData = `token="${data['token']}", email="${data['email']}"`;
-      block('Authorization', `Token ${authData}`);
+    if (authenticatorType === 'authenticator:devise') {
+      token = data['token'];
+    } else if (authenticatorType === 'authenticator:oauth2') {
+      token = data['access_token'];
     }
 
-    if (Ember.isEqual(authenticatorType, 'authenticator:oauth2')) {
-      block('Authorization', `Bearer "${data['access_token']}"`);
-    }
+    block('Authorization', `Bearer ${token}`);
   }
 });
+
