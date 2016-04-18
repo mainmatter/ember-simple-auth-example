@@ -39,7 +39,7 @@
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.3",
     "ember-inflector": "1.9.4",
-    "ember-simple-auth": "~1.0.0",
+    "ember-simple-auth": "1.1.0-beta.4",
     "glob": "^5.0.13"
   }
 }
