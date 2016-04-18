@@ -2,6 +2,7 @@ import Ember from 'ember';
 import { module, test } from 'qunit';
 import Pretender from 'pretender';
 import { authenticateSession } from '../helpers/ember-simple-auth';
+import { currentSession } from '../helpers/ember-simple-auth';
 import startApp from '../helpers/start-app';
 
 var App;
@@ -10,15 +11,15 @@ var server;
 module('Authentication', {
   setup: function() {
     App = startApp();
-    var response = {
-      "errors": [
-        {
-          status: "401",
-          detail: "Access denied"
-        }
-      ]
-    };
     server = new Pretender(function() {
+      var response = {
+        errors: [
+          {
+            detail: "Access denied",
+            status: "401"
+          }
+        ]
+      };
       this.get('/api/posts', function() {
         return [401, { 'Content-Type': 'application/json' }, JSON.stringify(response)];
       });
@@ -30,19 +31,18 @@ module('Authentication', {
   },
 });
 
+// FIXME: this test fails on any assertion, investigate why
 test('user cannot see posts if not authorized', function(assert) {
-  // FIXME: this test fails on any assertion, investigate why
   authenticateSession(App);
 
+  andThen(function() {
+    assert.equal(currentSession(App).get('isAuthenticated'), true);
+  });
   visit('/');
 
-  click('a[href="/posts"]');
+  click('a:contains("Posts")');
 
   andThen(function() {
-    assert.notEqual(currentRouteName(), 'posts');
-  });
-
-  andThen(function() {
-    assert.equal(find('a:contains("Login")').length, 1, 'The page shows a login link and session is unauthenticated');
+    assert.equal(currentSession(App).get('isAuthenticated'), false);
   });
 });
