@@ -14,10 +14,24 @@ module.exports = function(app) {
   });
 
   app.post('/revoke', function(req, res) {
+    res.setHeader('Content-Type', 'application/json');
+
     if (req.body.token_type_hint === 'access_token' || req.body.token_type_hint === 'refresh_token') {
       res.send('');
     } else {
       res.status(400).send({ error: 'unsupported_token_type' });
     }
-  })
+  });
+
+  app.post('/users/sign_in', function(req, res) {
+    res.setHeader('Content-Type', 'application/json');
+
+    if (req.body.user.email === 'test@test.com' && req.body.user.password === 'password') {
+      res.send({ token: 'secret token!', email: 'test@test.com' });
+    } else if (req.body.user.email === 'admin@test.com' && req.body.user.password === 'admin') {
+      res.send({ token: 'secret admin token!', email: 'admin@test.com' });
+    } else {
+      res.status(401).send({ error: 'Invalid email or password.'});
+    }
+  });
 };

@@ -1,3 +1,10 @@
 html, body {
   margin: 20px;
 }
+
+.errors {
+  border: 1px solid red;
+  color: red;
+  margin: 10px;
+  padding: 10px;
+}
