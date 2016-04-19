@@ -7,10 +7,18 @@ import startApp from '../helpers/start-app';
 
 var App;
 var server;
+var adapterException;
 
 module('Authentication', {
   setup: function() {
     App = startApp();
+
+    // Ignore promise rejection to avoid "Adapter operation failed"
+    // during tests.
+    // Original exception will fail test on promise rejection.
+    adapterException = Ember.Test.adapter.exception;
+    Ember.Test.adapter.exception = () => null;
+
     server = new Pretender(function() {
       var response = {
         errors: [
@@ -31,7 +39,6 @@ module('Authentication', {
   },
 });
 
-// FIXME: this test fails on any assertion, investigate why
 test('user cannot see posts if not authorized', function(assert) {
   authenticateSession(App);
 
@@ -40,9 +47,11 @@ test('user cannot see posts if not authorized', function(assert) {
   });
   visit('/');
 
-  click('a:contains("Posts")');
+  visit('/posts');
 
   andThen(function() {
     assert.equal(currentSession(App).get('isAuthenticated'), false);
+    assert.equal(find('a:contains("Login")').length, 1, 'The page shows a logout link when the session is not authenticated');
+    assert.equal(currentRouteName(), 'index');
   });
 });
